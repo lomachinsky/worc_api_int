@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "2989a905-642f-412c-a058-24e36347e161",
+		"name": "D_API_TEKS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1.0 Создание накладной - InvoiceCreate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Auth}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<request>\r\n\t<Sender>\r\n\t\t<sCompany>СКЛАД ООО</sCompany>\r\n\t\t<sFIO>Кушель Сергей Васильевич</sFIO>\r\n\t\t<sPhone>380935068742</sPhone>\r\n\t\t<sRegion></sRegion>\r\n\t\t<sDistrict></sDistrict>\r\n\t\t<sCity>Одесса</sCity>\r\n\t\t<sAddress>Київське (Ленінградське)</sAddress>\r\n\t\t<sHouse>27</sHouse>\r\n\t\t<sFlat></sFlat>\r\n\t</Sender>\r\n\t<Recevier>\r\n\t\t<rCompany>Харьков_ГерТруда 7</rCompany>\r\n\t\t<rFIO>Гертруда Цитрус</rFIO>\r\n\t\t<rPhone>+380639343384</rPhone>\r\n\t\t<rRegion></rRegion>\r\n\t\t<rDistrict></rDistrict>\r\n\t\t<rCity>Харьков</rCity>\r\n\t\t<rAddress>Героїв Праці</rAddress>\r\n\t\t<rHouse>7</rHouse>\t\r\n\t\t<rFlat></rFlat>\r\n\t</Recevier>\r\n\t<InvoiceParams>\r\n\t\t<InvoiceNumber></InvoiceNumber>\r\n\t\t<Category>STNRD</Category>\r\n\t\t<Notes>4м</Notes>\r\n\t\t<Conditions>\r\n\t\t\t<DescrContent></DescrContent>\r\n\t\t\t<TimeDelivery></TimeDelivery>\r\n\t\t\t<InOut></InOut>\r\n\t\t\t<Notification></Notification>\r\n\t\t\t<inHand></inHand>\r\n\t\t</Conditions>\r\n\t\t<PlacesItems>\r\n\t\t\t<item>\r\n\t<Format>BOX</Format>\r\n\t<Qty>4</Qty>\r\n\t<Weight>15.883</Weight>\r\n\t<VolWeight>12.75</VolWeight>\r\n\t<Value>71 755</Value>\r\n</item>\r\n\t\t</PlacesItems>\r\n\t</InvoiceParams>\r\n</request>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{W_URL}}/InvoiceCreate/{{ApiKey}}",
+					"host": [
+						"{{W_URL}}"
+					],
+					"path": [
+						"InvoiceCreate",
+						"{{ApiKey}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1 Трекинг - InvoiceTracking (get)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Auth}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{W_URL}}/InvoiceTracking/{{ApiKey}}?InvoiceNumber=U000004304452",
+					"host": [
+						"{{W_URL}}"
+					],
+					"path": [
+						"InvoiceTracking",
+						"{{ApiKey}}"
+					],
+					"query": [
+						{
+							"key": "InvoiceNumber",
+							"value": "U000004304452"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2 Трекинг - InvoiceTracking (post)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Auth}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<request>\r\n    <InvoiceNumber>U000004304452</InvoiceNumber>\r\n</request>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{W_URL}}/InvoiceTracking/{{ApiKey}}",
+					"host": [
+						"{{W_URL}}"
+					],
+					"path": [
+						"InvoiceTracking",
+						"{{ApiKey}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3 Установить статус - StatusAdd (post)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Auth}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<request>\r\n    <InvoiceNumber>8000000164517</InvoiceNumber>\r\n</request>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{W_URL}}/InvoiceTracking/{{ApiKey}}",
+					"host": [
+						"{{W_URL}}"
+					],
+					"path": [
+						"InvoiceTracking",
+						"{{ApiKey}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 Печать Накладная - InvoicePrint",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Auth}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{W_URL}}/InvoicePrint/{{ApiKey}}?InvoiceNumber=U000004304452",
+					"host": [
+						"{{W_URL}}"
+					],
+					"path": [
+						"InvoicePrint",
+						"{{ApiKey}}"
+					],
+					"query": [
+						{
+							"key": "InvoiceNumber",
+							"value": "U000004304452"
+						},
+						{
+							"key": "type",
+							"value": "MXL",
+							"description": "PDF, MXL",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 Печать Стикера А4 -LabelA4Print",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Auth}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{W_URL}}/LabelA4Print/{{ApiKey}}?InvoiceNumber=U000004304452&type=MXL&cargo=1",
+					"host": [
+						"{{W_URL}}"
+					],
+					"path": [
+						"LabelA4Print",
+						"{{ApiKey}}"
+					],
+					"query": [
+						{
+							"key": "InvoiceNumber",
+							"value": "U000004304452"
+						},
+						{
+							"key": "type",
+							"value": "MXL",
+							"description": "PDF, MXL, HTML5"
+						},
+						{
+							"key": "cargo",
+							"value": "1",
+							"description": "По грузовым местам"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.3 Печать Термо-Стикера -LabelTermoPrint",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Auth}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{W_URL}}/LabelTermoPrint/{{ApiKey}}?InvoiceNumber=U000004304452&type=MXL&cargo=1",
+					"host": [
+						"{{W_URL}}"
+					],
+					"path": [
+						"LabelTermoPrint",
+						"{{ApiKey}}"
+					],
+					"query": [
+						{
+							"key": "InvoiceNumber",
+							"value": "U000004304452"
+						},
+						{
+							"key": "type",
+							"value": "MXL",
+							"description": "PDF, MXL, HTML5"
+						},
+						{
+							"key": "cargo",
+							"value": "1",
+							"description": "По грузовым местам"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.0 Реестр (отгр. курьеру) - StatusAdd",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Auth}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<request>\r\n    <data>\r\n        <element>\r\n            <InvoiceNumber>8000000106285</InvoiceNumber>\r\n            <StatusDate>10.08.2020 12:53:12</StatusDate>\r\n            <Status>000000002</Status>\r\n            <ItemQty>1</ItemQty>\r\n            <PlacesItems>\r\n                <item>8000000106285-004008</item>\r\n                <item>8000000106285-002008</item>\r\n            </PlacesItems>\r\n        </element>\r\n    </data>\r\n</request>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{W_URL}}/StatusAdd/{{ApiKey}}",
+					"host": [
+						"{{W_URL}}"
+					],
+					"path": [
+						"StatusAdd",
+						"{{ApiKey}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "W_URL",
+			"value": "https://195.128.227.67:6744/PrettyApi/hs/api"
+		},
+		{
+			"key": "ApiKey",
+			"value": "305A7884CC1CC7108B9FF0A60CB793F6"
+		},
+		{
+			"key": "Auth",
+			"value": "Q2l0cnVzX0FQSTpXJEQ2NGhkOA=="
+		}
+	]
+}
